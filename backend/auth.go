@@ -8,6 +8,7 @@ import (
 
 	"tourbackend/crypto"
 	db "tourbackend/database/gen"
+	"tourbackend/handler"
 
 	"github.com/labstack/echo/v4"
 )
@@ -15,11 +16,11 @@ import (
 var COOKIE_LIFETIME = time.Hour * 24 * 7
 
 type AuthHandler struct {
-	*Handler
+	*handler.Handler
 }
 
 func NewAuthHandler(queries *db.Queries) *AuthHandler {
-	return &AuthHandler{NewHandler(queries)}
+	return &AuthHandler{handler.NewHandler(queries)}
 }
 
 type LoginRequest struct {
@@ -28,7 +29,7 @@ type LoginRequest struct {
 }
 
 func (h *AuthHandler) login(c echo.Context) error {
-	r := h.newReqCtx(c)
+	r := h.NewReqCtx(c)
 
 	var req LoginRequest
 	if err := r.Echo.Bind(&req); err != nil {
@@ -78,7 +79,7 @@ type RegisterRequest struct {
 }
 
 func (h *AuthHandler) register(c echo.Context) error {
-	r := h.newReqCtx(c)
+	r := h.NewReqCtx(c)
 
 	var req RegisterRequest
 	if err := c.Bind(&req); err != nil {
@@ -131,7 +132,7 @@ func (h *AuthHandler) register(c echo.Context) error {
 }
 
 func (h *AuthHandler) profile(c echo.Context) error {
-	r := h.newReqCtx(c)
+	r := h.NewReqCtx(c)
 
 	if r.User == nil {
 		return r.Error(http.StatusUnauthorized, "authentication required")

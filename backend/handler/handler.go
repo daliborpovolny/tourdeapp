@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"context"
@@ -26,7 +26,7 @@ type RequestCtx struct {
 	User *db.User
 }
 
-func (h *Handler) newReqCtx(c echo.Context) *RequestCtx {
+func (h *Handler) NewReqCtx(c echo.Context) *RequestCtx {
 
 	r := &RequestCtx{
 		Ctx:     c.Request().Context(),
