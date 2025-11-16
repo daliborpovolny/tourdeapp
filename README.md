@@ -21,13 +21,13 @@ After each change you'll have to rebuild the images and rerun the containers
 - server:
     - in /apps/server run: docker build -t tourbackend .
     - this will create a docker image
-    - to run this docker image ei create a container
+    - to run this docker image ei create a container:
         - docker run --rm -p 3000:3000 --name tourbackend tourbackend
 - web:
     - in /apps/web run: docker build -t tourfrontend .
     - this will create a docker image
     - to run this docker image ei create a container:
-            - docker run --rm -p 3001:3001 --name tourfrontend tourfrontend
+        - docker run --rm -p 3001:3001 --name tourfrontend tourfrontend
 
 ## Deploy to Tour de Cloud
 git push automatically deploys to the cloud with a github action - once the fee is paid
