@@ -1,5 +1,3 @@
 node_modules
 .env
 .DS_Store
-./apps/server/internal/database/db_file.db
-apps/server/internal/database/db_file.db
