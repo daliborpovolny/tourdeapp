@@ -1,1 +1,2 @@
-database/db_file.db
+.\internal\database\db_file.db
+./internal/database/db_file.db
