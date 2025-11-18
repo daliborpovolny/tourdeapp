@@ -16,4 +16,6 @@ if exist .\apps\web (
     start cmd /k npm run dev
 )
 
+cd "%loc%"
+
 exit /b
