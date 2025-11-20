@@ -20,7 +20,7 @@
 </script>
 
 <h1>Courses</h1>
-<br/>
+<br />
 
 {#await coursesPromise}
 	<p>Loading</p>

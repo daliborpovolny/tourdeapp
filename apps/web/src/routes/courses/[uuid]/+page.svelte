@@ -4,7 +4,7 @@
 	let coursesPromise: Promise<any> = loadCourseDetail();
 
 	async function loadCourseDetail() {
-		return fetch('/api/courses/'+page.params.uuid, {
+		return fetch('/api/courses/' + page.params.uuid, {
 			method: 'GET',
 			headers: { 'Content-type': 'application/json' }
 		})
@@ -21,15 +21,15 @@
 	}
 </script>
 
-<br>
+<br />
 {#await coursesPromise}
 	<p>Loading course detail...</p>
 {:then data}
-    <div>
-        <h2>{data.name}</h2>
-        <br>
-        <p>{data.description}</p>
-    </div>
+	<div>
+		<h2>{data.name}</h2>
+		<br />
+		<p>{data.description}</p>
+	</div>
 {:catch error}
 	<p></p>
 {/await}
