@@ -2,7 +2,7 @@
 	let coursesPromise: Promise<any[]> = loadCourses();
 
 	async function loadCourses() {
-		return fetch('api/courses', {
+		return fetch('/api/courses', {
 			method: 'GET',
 			headers: { 'Content-type': 'application/json' }
 		})
@@ -20,14 +20,14 @@
 </script>
 
 <h1>Courses</h1>
-<br />
+<br/>
 
 {#await coursesPromise}
 	<p>Loading</p>
 {:then data}
 	<ul>
 		{#each data as course}
-			<a href="/courses/{course.uuid}"> {course.name} </a>
+			<a href="courses/{course.uuid}"> {course.name} </a>
 			<p>{course.description}</p>
 			<br />
 		{/each}

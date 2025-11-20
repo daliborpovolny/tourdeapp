@@ -7,7 +7,7 @@
 	let loginPromise: Promise<any> | null = null;
 
 	function login() {
-		loginPromise = fetch('api/login', {
+		loginPromise = fetch('/api/login', {
 			method: 'POST',
 			headers: { 'Content-type': 'application/json' },
 			credentials: 'include',

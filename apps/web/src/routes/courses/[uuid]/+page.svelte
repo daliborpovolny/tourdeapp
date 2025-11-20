@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 
-	let coursesPromise: Promise<any[]> = loadCourses();
+	let coursesPromise: Promise<any> = loadCourseDetail();
 
-	async function loadCourses() {
-		return fetch('api/courses', {
+	async function loadCourseDetail() {
+		return fetch('/api/courses/'+page.params.uuid, {
 			method: 'GET',
 			headers: { 'Content-type': 'application/json' }
 		})
@@ -21,6 +21,15 @@
 	}
 </script>
 
-<div>
-	<h1>UUID {page.params.uuid}</h1>
-</div>
+<br>
+{#await coursesPromise}
+	<p>Loading course detail...</p>
+{:then data}
+    <div>
+        <h2>{data.name}</h2>
+        <br>
+        <p>{data.description}</p>
+    </div>
+{:catch error}
+	<p></p>
+{/await}

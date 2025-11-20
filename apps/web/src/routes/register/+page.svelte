@@ -10,7 +10,7 @@
 	let registerPromise: Promise<any> | null = null;
 
 	function register() {
-		registerPromise = fetch('api/register', {
+		registerPromise = fetch('/api/register', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			credentials: 'include',
