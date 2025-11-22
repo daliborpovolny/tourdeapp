@@ -9,7 +9,7 @@ WORKDIR /app
 # Download dependencies first (cached layer)
 COPY go.mod go.sum ./
 
-COPY internal/database/db_file.db /db_file.db
+# COPY internal/database/db_file.db /db_file.db
 COPY static /static
 
 RUN go mod download
