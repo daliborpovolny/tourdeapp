@@ -9,9 +9,16 @@
 			headers: { 'Content-type': 'application/json' }
 		})
 			.then(async (res) => {
+				if (res.status == 404) {
+					throw new Error('Unknown course');
+				}
+
 				if (!res.ok) {
-					const err = await res.json();
-					throw new Error(err.message || 'Login failed');
+					try {
+						const err = await res.json();
+					} catch {
+						throw new Error('Failed to get course info');
+					}
 				}
 				return res.json();
 			})
@@ -31,5 +38,5 @@
 		<p>{data.description}</p>
 	</div>
 {:catch error}
-	<p></p>
+	<p class="text-red-500 capitalize">{error.message}</p>
 {/await}
