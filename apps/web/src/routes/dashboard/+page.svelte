@@ -1,4 +1,11 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import {isLoggedIn} from '$lib/auth.svelte.ts'
+
+	if (!isLoggedIn()) {
+		goto('/login')
+	}
+
 	let coursesPromise: Promise<any[]> = loadCourses();
 
 	async function loadCourses() {
