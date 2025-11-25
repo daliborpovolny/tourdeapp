@@ -56,8 +56,16 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(auth.AuthMiddleware(queries))
 
+	e.GET("/api", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string]string{"organization": "Student 1 Cyber Games"})
+	})
+
 	e.GET("/", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, map[string]string{"organization": "Student Cyber Games"})
+		return c.JSON(http.StatusOK, map[string]string{"organization": "Student 2Cyber Games"})
+	})
+
+	e.GET("/api", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string]string{"organization": "Student 4 Cyber Games"})
 	})
 
 	// Auth
